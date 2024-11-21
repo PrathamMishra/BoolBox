@@ -4,6 +4,7 @@ const refEnum = {
     ADD_INPUT: 0,
     ADD_OUTPUT: 1
 }
+const circles = [];
 
 function createBar(text, x, y, state = true) {
     const width = 150;
@@ -28,7 +29,23 @@ function createBar(text, x, y, state = true) {
         x,
         y,
         ref: state ? refEnum.ADD_INPUT : refEnum.ADD_OUTPUT
-    })
+    });
+}
+
+function addCircle(x, y) {
+    const width = 150;
+    const height = 50;
+    filledCircle({
+        x: x + width/2,
+        y: y + height + 50,
+        radius: 10,
+        color: 'grey',
+    });
+    objectCollection.addObject({
+        x: x + width/2,
+        y: y + height + 10,
+        ref: 'circle'
+    });
 }
 
 function setup() {
@@ -41,8 +58,9 @@ function setup() {
 function onCanvasClick(x, y) {
     const target = objectCollection.getObject(x,y);
     if (target == refEnum.ADD_INPUT) {
-        console.log('input');
+        addCircle(100, 100);
     } else if (target == refEnum.ADD_OUTPUT) {
-        console.log('output');
+        addCircle(1100, 100);
     }
+    console.log(target);
 }

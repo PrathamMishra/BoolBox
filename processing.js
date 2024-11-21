@@ -67,7 +67,6 @@ function filledRect(x, y, width, height, color){
     ctx.fill();
     ctx.closePath();
     ctx.fillStyle = prevFill;
-
 }
 
 function addTextBox({x, y, width, height, color, text, textColor}) {
@@ -103,6 +102,29 @@ function rect(x, y, width, height, color, lineWidth){
     ctx.closePath();
     ctx.strokeStyle = prevStrokeColor;
     ctx.lineWidth = prevStrokeWidth;
+}
+
+function circle({x, y, radius, color, lineWidth}){
+    const prevStrokeColor = ctx.strokeStyle;
+    const prevStrokeWidth = ctx.lineWidth;
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, 2 * Math.PI);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = lineWidth;
+    ctx.stroke();
+    ctx.closePath();
+    ctx.strokeStyle = prevStrokeColor;
+    ctx.lineWidth = prevStrokeWidth;
+}
+
+function filledCircle({x, y, radius, color}){
+    const prevFill = ctx.fillStyle;
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, 2 * Math.PI);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.closePath();
+    ctx.fillStyle = prevFill;
 }
 
 function addLine({fromX, fromY, toX, toY, width, color}) {
