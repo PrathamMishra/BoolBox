@@ -22,9 +22,6 @@ select {
   -webkit-appearance: none;
   appearance: none;
 }
-.hidden {
-  display: none;
-}
 input {
   -webkit-appearance: none;
   appearance: none;
