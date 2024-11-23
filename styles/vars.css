@@ -1,0 +1,22 @@
+:root[data-theme="light"] {
+    --text: rgb(3, 27, 22);
+    --text-alpha: rgb(3, 27, 22, 0.5);
+    --background: rgb(232, 252, 249);
+    --background-alpha: rgb(232, 252, 249, 0.5);
+    --primary: rgb(15, 128, 118);
+    --primary-alpha: rgb(15, 128, 118, 0.5);
+    --secondary: rgb(95, 152, 236);
+    --secondary-alpha: rgb(95, 152, 236, 0.5);
+    --accent: rgb(25, 70, 204);
+}
+:root[data-theme="dark"] {
+    --text: rgb(229, 252, 247);
+    --text-alpha: rgb(229, 252, 247, 0.5);
+    --background: rgb(3, 23, 20);
+    --background-alpha: rgba(3, 23, 20, 0.5);
+    --primary: rgb(129, 240, 230);
+    --primary-alpha: rgb(129, 240, 230, 0.5);
+    --secondary: rgb(19, 74, 158);
+    --secondary-alpha: rgb(19, 74, 158, 0.5);
+    --accent: rgb(50, 94, 230);
+}

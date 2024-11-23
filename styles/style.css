@@ -1,0 +1,54 @@
+@import url("./vars.css");
+@import url("./base.css");
+@import url("./header.css");
+@import url("./footer.css");
+main {
+    flex-grow: 1;
+    padding: 16px 32px;
+    display: flex;
+    flex-direction: column;
+}
+#container {
+    flex-grow: 1;
+}
+#inputs {
+    height: 48px;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 8px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1;
+    margin: 8px;
+}
+.input-wrapper > button {
+    border: 1px solid var(--text);
+    border-radius: 50%;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    background: linear-gradient(var(--background-alpha) 20%, var(--primary-alpha) 80%);
+}
+.input-wrapper:hover {
+    border: 1px solid var(--text);
+    border-radius: 30px;
+}
+.input-wrapper:hover button {
+    border-radius: 30px;
+    border: none;
+}
+.input-wrapper:not(.no-input):hover button {
+    border-left: 1px solid var(--text);
+}
+.input-wrapper:hover .hidden{
+    display: block;
+    margin-left: 8px;
+}
+  

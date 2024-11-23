@@ -1,0 +1,23 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 16px 32px;
+    height: 30px;
+    border-bottom: 1px solid var(--text);
+}
+#logo {
+    font-weight: bold;
+    font-size: 18px;
+}
+nav > * {
+    margin: 0px 8px;
+    font-size: 16px;
+}
+#theme {
+    border: 1px solid var(--text);
+    border-radius: 16px;
+    padding: 8px 16px;
+    transition: ease-in;
+}
