@@ -16,6 +16,7 @@ function setTheme(newTheme) {
         themeText.innerText = 'Night';
     }
 }
+setTheme(html.getAttribute('data-theme'));
 themeContainer.onclick = function () {
     const currentTheme = html.dataset.theme;
     const newTheme = currentTheme == 'light' ? 'dark' : 'light';
