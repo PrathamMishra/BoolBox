@@ -4,12 +4,62 @@
 @import url("./footer.css");
 main {
     flex-grow: 1;
-    padding: 16px 32px;
+    padding: 16px 48px;
     display: flex;
     flex-direction: column;
 }
 #container {
     flex-grow: 1;
+    display: flex;
+    position: relative;
+}
+#logic-container {
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+}
+.bar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.bar-container button {
+    border: 1px solid var(--background);
+    border-radius: 50%;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    height: 48px;
+}
+.plus div{
+    background: var(--primary);
+    border: 1px solid var(--background);
+}
+.minus div{
+    background: var(--secondary);
+    border: 1px solid var(--text);
+}
+.ports {
+    flex-grow: 1;
+    max-width: 8px;
+    width: 8px;
+    border-radius: 8px;
+    margin: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.ports div {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    margin: 2px;
+}
+div.off {
+    background: var(--background);
+    border-color: var(--text);
 }
 #inputs {
     height: 48px;
@@ -66,4 +116,30 @@ main {
     width: 80px;
     margin-left: 8px;
 }
-  
+
+.logicNode {
+    position: absolute;
+    top: 150px;
+    left: 150px;
+    display: flex;
+    padding: 16px 8px;
+    border: 1px solid var(--text);
+    border-radius: 8px;
+    height: calc(10*24px);
+    display: flex;
+    align-items: center;
+    background-color: var(--accent);
+    color: white; 
+}
+.logicNode .name {
+    margin: 0 16px;
+}
+#path-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index:-1;
+}
+#path-container svg {
+    position: absolute;
+}

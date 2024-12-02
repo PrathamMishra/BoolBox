@@ -1,98 +1,163 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bool Box</title>
-    <link rel="stylesheet" href="/styles/style.css" />
-    <script src="https://kit.fontawesome.com/f33d49d3c9.js" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/f33d49d3c9.js" crossorigin="anonymous"></script>
-    <script>
-        (function() {
-            const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
-            const localTheme = localStorage.getItem('theme');
-            if (localTheme) {
-                document.documentElement.setAttribute('data-theme', localTheme);
-                return;
-            }
-            if (systemSettingDark.matches) {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                return;
-            }
-            document.documentElement.setAttribute('data-theme', 'light');
-        }())
-    </script>
-</head>
-<body>
-    <header>
-        <div id="logo">
-            <i class="fa-solid fa-toggle-on"></i>
-            <span style="margin-left: 8px;">
-                Bool Box
-            </span>
-        </div>
-        <nav>
-            <button id="theme">
-                <i class="fa-solid fa-moon" id="theme-icon"></i>
-                <span style="margin-left: 4px;" id="theme-text">
-                    Night
-                </span>
-            </button>
-            <button>About</button>
-        </nav>
-    </header>
-    <main>
-        <div id="container"></div>
-        <div id="inputs">
-            <div class="input-wrapper">
-                <span class="hidden">
-                    <input type="text" placeholder="Enter name of Logic...">
-                </span>
-                <button>
-                    <i class="fa-regular fa-floppy-disk fa-xl"></i>
-                    <span class="hidden">
-                        Save
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bool Box</title>
+        <link rel="stylesheet" href="/styles/style.css" />
+        <script
+            src="https://kit.fontawesome.com/f33d49d3c9.js"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://kit.fontawesome.com/f33d49d3c9.js"
+            crossorigin="anonymous"
+        ></script>
+        <script>
+            (function () {
+                const systemSettingDark = window.matchMedia(
+                    "(prefers-color-scheme: dark)"
+                );
+                const localTheme = localStorage.getItem("theme");
+                if (localTheme) {
+                    document.documentElement.setAttribute(
+                        "data-theme",
+                        localTheme
+                    );
+                    return;
+                }
+                if (systemSettingDark.matches) {
+                    document.documentElement.setAttribute("data-theme", "dark");
+                    return;
+                }
+                document.documentElement.setAttribute("data-theme", "light");
+            })();
+        </script>
+    </head>
+    <body>
+        <header>
+            <div id="logo">
+                <i class="fa-solid fa-toggle-on"></i>
+                <span style="margin-left: 8px"> Bool Box </span>
+            </div>
+            <nav>
+                <button id="theme">
+                    <i class="fa-solid fa-moon" id="theme-icon"></i>
+                    <span style="margin-left: 4px" id="theme-text">
+                        Night
                     </span>
                 </button>
+                <button>About</button>
+            </nav>
+        </header>
+        <main>
+            <div id="container">
+                <div class="bar-container plus">
+                    <button
+                        style="
+                            background: radial-gradient(
+                                var(--primary) 20%,
+                                var(--primary-alpha) 80%
+                            );
+                        "
+                    >
+                        <i
+                            class="fa-solid fa-plus fa-xl"
+                            style="color: var(--background)"
+                        ></i>
+                    </button>
+                    <div id="bar" class="ports"></div>
+                </div>
+                <div id="logic-container">
+                </div>
+                <div class="bar-container minus">
+                    <button
+                        style="
+                            background: radial-gradient(
+                                var(--secondary) 20%,
+                                var(--secondary-alpha) 80%
+                            );
+                        "
+                    >
+                        <i
+                            class="fa-solid fa-minus fa-xl"
+                            style="color: var(--text)"
+                        ></i>
+                    </button>
+                    <div id="bar" class="ports"></div>
+                </div>
+                <div id="path-container">
+                </div>
             </div>
-            <div class="input-wrapper">
-                <span class="hidden">
-                    <input type="range" placeholder="Enter name of Logic..." min="0" max="10" value="0">
-                </span>
-                <button>
-                    <i class="fa-solid fa-sliders fa-xl"></i>
+            <div id="inputs">
+                <div class="input-wrapper">
                     <span class="hidden">
-                        Latency
+                        <input
+                            type="text"
+                            placeholder="Enter name of Logic..."
+                        />
                     </span>
-                </button>
-            </div>
-            <div class="input-wrapper no-input">
-                <button>
-                    <i class="fa-solid fa-table fa-xl"></i>
+                    <button>
+                        <i class="fa-regular fa-floppy-disk fa-xl"></i>
+                        <span class="hidden"> Save </span>
+                    </button>
+                </div>
+                <div class="input-wrapper">
                     <span class="hidden">
-                        Create Table
+                        <input
+                            type="range"
+                            placeholder="Enter name of Logic..."
+                            min="0"
+                            max="10"
+                            value="0"
+                        />
                     </span>
-                </button>
+                    <button>
+                        <i class="fa-solid fa-sliders fa-xl"></i>
+                        <span class="hidden"> Latency </span>
+                    </button>
+                </div>
+                <div class="input-wrapper no-input">
+                    <button>
+                        <i class="fa-solid fa-table fa-xl"></i>
+                        <span class="hidden"> Create Table </span>
+                    </button>
+                </div>
             </div>
-        </div>
-    </main>
-    <footer>
-        <div style="margin-right:16px;">
-            Saved:
-        </div>
-        <div id="saved-logics">
-            <button class="logic">AND</button>
-            <button class="logic">NOT</button>
+        </main>
+        <footer>
+            <div style="margin-right: 16px">Saved:</div>
+            <div id="saved-logics"></div>
+        </footer>
+        <template id="saved-logic-template">
             <button class="logic">
-                <span class="logic-name">
-                    OR
-                </span>
-                <i class='fa-solid fa-trash'></i>
+                <span class="logic-name"> OR </span>
+                <i class="fa-solid fa-trash"></i>
             </button>
-        </div>
-    </footer>
-    <script src="theme.js"></script>
-    <script src="script.js"></script>
-</body>
+        </template>
+        <template id="default-logic-template">
+            <button class="logic">
+                <span class="logic-name"> AND </span>
+            </button>
+        </template>
+        <template id="logic-node-template">
+            <div class="logicNode">
+                <div class="plus ports">
+                </div>
+                <div class="name">
+                    SAMPLE
+                </div>
+                <div class="minus ports">
+                </div>
+            </div>
+        </template>
+        <template id="path-template">
+            <svg width="100%" height="100%">
+                <path stroke="var(--text)" stroke-width="5" d="" fill="none"></path>
+            </svg>
+        </template>
+        <script src="theme.js"></script>
+        <script type="module" src="script.js"></script>
+    </body>
 </html>
