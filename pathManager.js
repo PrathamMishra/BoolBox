@@ -42,7 +42,7 @@ export class PathManager {
             });
         })
     }
-
+    // TODO: Add Colours to ports
     addSourcePort(node) {
         this.sourcePorts.push(node);
         node.addEventListener('mousedown', () => {
@@ -56,24 +56,25 @@ export class PathManager {
             node.sourcedPaths.push(this.currentNode.parentNode);
         });
     }
-
-    addSinkPort(node) {
-        node.addEventListener('mouseup', () => {
+    // TODO: Add Colours to ports
+    addSinkPort(port) {
+        port.addEventListener('mouseup', () => {
             if (!this.startPort) return;
-            if (this.startPort == node) {
+            if (this.startPort == port) {
                 this.clearPath();
                 return;
             }
-            const {portCenterX, portCenterY} = this.getPortCoords(node);
+            const {portCenterX, portCenterY} = this.getPortCoords(port);
             const currentPath = this.currentNode.getAttribute("d").split(" ");
             currentPath[currentPath.length-1] = portCenterY;
             currentPath[currentPath.length-2] = portCenterX;
             this.currentNode.setAttribute("d", currentPath.join(' '));
-            if (node.sinkingPath) {
-                this.deletePath(node.sinkingPath);
+            if (port.sinkingPath) {
+                this.deletePath(port.sinkingPath);
             }
-            node.sinkingPath = this.currentNode.parentNode;
-            this.currentNode.parentNode.sink = node;
+            port.setState(this.currentNode.parentNode?.source?.state);
+            port.sinkingPath = this.currentNode.parentNode;
+            this.currentNode.parentNode.sink = port;
             this.startPort = null;
             this.currentNode = null;
         });
@@ -126,5 +127,13 @@ export class PathManager {
         const {portCenterX: sourceX, portCenterY: sourceY} = this.getPortCoords(path.source);
         const {portCenterX: sinkX, portCenterY: sinkY} = this.getPortCoords(path.sink);
         path.querySelector('path').setAttribute("d", `M ${sourceX} ${sourceY} L ${sinkX} ${sinkY}`);
+    }
+
+    getConnectedSinkPorts(port) {
+        const sinks = [];
+        port.sourcedPaths && port.sourcedPaths.forEach((path)=>{
+            sinks.push(path.sink);
+        });
+        return sinks;
     }
 }

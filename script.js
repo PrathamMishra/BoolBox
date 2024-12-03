@@ -22,8 +22,10 @@ let positionOffset = 0;
 plusContainer.addEventListener('click', function(e) {
     if (e.target.closest('button')) {
         const port = createPort(plusBar, {canToggle: true, sourcePort: true});
-        plusBar.outputs.push(port);
-        pathManager.updateConnectedPaths(plusBar);
+        if (port) {
+            plusBar.outputs.push(port);
+            pathManager.updateConnectedPaths(plusBar);
+        }
         return;
     }
 });
@@ -31,8 +33,10 @@ plusContainer.addEventListener('click', function(e) {
 minusContainer.addEventListener('click', function(e) {
     if (e.target.closest('button')) {
         const port = createPort(minusBar);
-        minusBar.inputs.push(port);
-        pathManager.updateConnectedPaths(minusBar);
+        if (port) {
+            minusBar.inputs.push(port);
+            pathManager.updateConnectedPaths(minusBar);
+        }
         return;
     }
 });
@@ -48,12 +52,18 @@ function createPort(container, options = {}) {
     // create and empty port
     const div = document.createElement('div');
     div.setState = function(state) {
+        if (div.state == state) return;
         div.state = state;
         if (state == true) {
             div.classList.remove('off');
         } else {
             div.classList.add('off');
         }
+        // update states of all connected sink ports
+        pathManager.getConnectedSinkPorts(div).forEach((sinkPort)=>{
+            sinkPort.setState(state);
+        });
+        options.onStateChange && options.onStateChange(div);
     }
     // by default, all ports will be off
     div.setState(false);
@@ -97,15 +107,22 @@ function addLogicsToFooter(currentEnum, template, canDelete) {
             const inputCount = currentEnum[key].i;
             newLogicNode.inputs = [];
             for(let i=0;i<inputCount;i++) {
-                const port = createPort(newLogicNode.querySelector('.plus'));
-                newLogicNode.inputs.push(port);
+                const port = createPort(newLogicNode.querySelector('.plus'), {
+                    onStateChange: () => {
+                    }
+                });
+                if (port) {
+                    newLogicNode.inputs.push(port);
+                }
             }
             // Adding Output ports
             const outputCount = currentEnum[key].o;
             newLogicNode.outputs = [];
             for(let i=0;i<outputCount;i++) {
                 const port = createPort(newLogicNode.querySelector('.minus'), {sourcePort: true});
-                newLogicNode.outputs.push(port);
+                if (port) {
+                    newLogicNode.outputs.push(port);
+                }
             }
             // Calculate height of container according to max port count
             newLogicNode.style.height = `calc(${Math.max(inputCount, outputCount)}*24px)`;
