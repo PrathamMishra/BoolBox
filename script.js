@@ -48,7 +48,7 @@ function toggleState(event) {
 
 function createPort(container, options = {}) {
     // if container cannot handle more nodes, then return
-    if (container.portCount >= MAX_PORT_LIMIT) return;
+    if (container.portCount > MAX_PORT_LIMIT) return;
     // create and empty port
     const div = document.createElement('div');
     div.setState = function(state) {
