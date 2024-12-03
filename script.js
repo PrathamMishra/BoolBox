@@ -1,5 +1,6 @@
 import defaultLogicEnum from "./logicEnum.js";
 import { PathManager } from "./pathManager.js";
+import { LogicManager } from "./logicManager.js";
 import { makeDraggable } from "./utils.js";
 const $ = document.querySelector.bind(document);
 const plusContainer = $('.bar-container.plus');
@@ -97,7 +98,7 @@ function addLogicsToFooter(currentEnum, template, canDelete) {
         logicButton.onclick = function () {
             const newLogicNode = logicNodeTemplate.content.cloneNode(true).children[0];
             newLogicNode.querySelector('.name').innerText = key;
-            newLogicNode.logicName = key;
+            newLogicNode.logic = new LogicManager(newLogicNode, logicEnum[key]);
             // Provide support to move nodes
             makeDraggable(newLogicNode, logicContainer, '.ports', ()=>{
                 positionOffset = 0;
@@ -109,6 +110,7 @@ function addLogicsToFooter(currentEnum, template, canDelete) {
             for(let i=0;i<inputCount;i++) {
                 const port = createPort(newLogicNode.querySelector('.plus'), {
                     onStateChange: () => {
+                        newLogicNode.logic.evaluateStates();
                     }
                 });
                 if (port) {
@@ -124,6 +126,8 @@ function addLogicsToFooter(currentEnum, template, canDelete) {
                     newLogicNode.outputs.push(port);
                 }
             }
+            // Evaluate States for first time
+            newLogicNode.logic.evaluateStates();
             // Calculate height of container according to max port count
             newLogicNode.style.height = `calc(${Math.max(inputCount, outputCount)}*24px)`;
             // add elements with some offset so that they don't overlap
