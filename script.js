@@ -17,6 +17,7 @@ let logicEnum = defaultLogicEnum;
 const savedLogicEnum = JSON.parse(localStorage.getItem('logics'));
 logicEnum = {...logicEnum, ...savedLogicEnum};
 const pathManager = new PathManager(pathContainer);
+let positionOffset = 0;
 
 plusContainer.addEventListener('click', function(e) {
     if (e.target.closest('button')) {
@@ -89,6 +90,7 @@ function addLogicsToFooter(currentEnum, template, canDelete) {
             newLogicNode.logicName = key;
             // Provide support to move nodes
             makeDraggable(newLogicNode, logicContainer, '.ports', ()=>{
+                positionOffset = 0;
                 pathManager.updateConnectedPaths(newLogicNode);
             });
             // Adding Input ports
@@ -107,6 +109,10 @@ function addLogicsToFooter(currentEnum, template, canDelete) {
             }
             // Calculate height of container according to max port count
             newLogicNode.style.height = `calc(${Math.max(inputCount, outputCount)}*24px)`;
+            // add elements with some offset so that they don't overlap
+            newLogicNode.style.top = 150 + positionOffset + 'px';
+            newLogicNode.style.left = 150 + positionOffset + 'px';
+            positionOffset += 15;
             logicContainer.appendChild(newLogicNode);
         }
         if (canDelete) {

@@ -119,8 +119,6 @@ div.off {
 
 .logicNode {
     position: absolute;
-    top: 150px;
-    left: 150px;
     display: flex;
     padding: 16px 8px;
     border: 1px solid var(--text);
