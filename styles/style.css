@@ -56,10 +56,12 @@ main {
     width: 24px;
     height: 24px;
     margin: 2px;
+    box-shadow: 0px 0px 5px aqua, 0px 0px 5px aqua inset;
 }
 div.off {
     background: var(--background);
     border-color: var(--text);
+    box-shadow: none;
 }
 #inputs {
     height: 48px;
