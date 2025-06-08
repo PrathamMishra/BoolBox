@@ -1,0 +1,107 @@
+// theme 1
+:root[data-theme="light"] {
+  --text: rgb(3, 27, 22);
+  --background: rgb(232, 252, 249);
+  --background-alpha: rgba(232, 252, 249, 0.5);
+  --primary: rgb(15, 128, 118);
+  --primary-alpha: rgba(15, 128, 118, 0.5);
+  --secondary: rgb(95, 152, 236);
+  --secondary-alpha: rgba(95, 152, 236, 0.5);
+  --accent: rgb(14, 121, 216);
+}
+:root[data-theme="dark"] {
+  --text: rgb(229, 252, 247);
+  --background: rgb(3, 23, 20);
+  --background-alpha: rgba(3, 23, 20, 0.5);
+  --primary: rgb(129, 240, 230);
+  --primary-alpha: rgba(129, 240, 230, 0.5);
+  --secondary: rgb(19, 74, 158);
+  --secondary-alpha: rgba(19, 74, 158, 0.5);
+  --accent: rgb(40, 146, 241);
+}
+
+// theme 2
+:root[data-theme="light"] {
+    --text: rgb(3, 27, 22);
+    --background: rgb(232, 252, 249);
+    --background-alpha: rgba(232, 252, 249, 0.5);
+    --primary: rgb(15, 128, 118);
+    --primary-alpha: rgba(15, 128, 118, 0.5);
+    --secondary: rgb(95, 152, 236);
+    --secondary-alpha: rgba(95, 152, 236, 0.5);
+    --accent: rgb(79, 92, 130);
+}
+:root[data-theme="dark"] {
+  --text: rgb(229, 252, 247);
+  --background: rgb(3, 23, 20);
+  --background-alpha: rgba(3, 23, 20, 0.5);
+  --primary: rgb(129, 240, 230);
+  --primary-alpha: rgba(129, 240, 230, 0.5);
+  --secondary: rgb(19, 74, 158);
+  --secondary-alpha: rgba(19, 74, 158, 0.5);
+  --accent: rgb(125, 138, 176);
+}
+
+// theme 3
+:root[data-theme="light"] {
+  --text: #142806;
+  --background: #f9fef6;
+  --primary: #64854c;
+  --secondary: #4e8fa6;
+  --accent: #1ec24f;
+}
+:root[data-theme="dark"] {
+  --text: #e4f9d6;
+  --background: #050a01;
+  --primary: #92B37A;
+  --secondary: #5798B0;
+  --accent: #3ce16e;
+}
+
+// theme 4
+:root[data-theme="light"] {
+  --text: #0b1405;
+  --background: #fafdf7;
+  --primary: #64854c;
+  --secondary: #4e8fa6;
+  --accent: #31aaa2;
+}
+:root[data-theme="dark"] {
+  --text: #eff9e9;
+  --background: #050802;
+  --primary: #92B37A;
+  --secondary: #5798B0;
+  --accent: #56cec6;
+}
+
+// theme 5
+:root[data-theme="light"] {
+  --text: #112202;
+  --background: #e9fdd8;
+  --primary: #64854c;
+  --secondary: #4e8fa6;
+  --accent: #0ceaed;
+}
+:root[data-theme="dark"] {
+  --text: #ebfddb;
+  --background: #122502;
+  --primary: #92B37A;
+  --secondary: #5798B0;
+  --accent: #13f1f3;
+}
+
+// theme 6
+:root[data-theme="light"] {
+  --text: #131d0c;
+  --background: #f7faf4;
+  --primary: #64854c;
+  --secondary: #4e8fa6;
+  --accent: #439d7e;
+}
+:root[data-theme="dark"] {
+  --text: #e8f2e1;
+  --background: #060904;
+  --primary: #92B37A;
+  --secondary: #5798B0;
+  --accent: #61bb9c;
+}

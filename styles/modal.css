@@ -1,0 +1,118 @@
+div#modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+div#modal-background {
+    backdrop-filter: blur(5px);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.95;
+    /* background: var(--background); */
+}
+
+div#modal {
+    background: var(--background);
+    border: 2px solid var(--text);
+    border-radius: 10px;
+    width: 50%;
+    position: fixed;
+    height: 50%;
+}
+
+div#modal-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--text);
+    height: 64px;
+}
+
+#modal-title {
+    flex-grow: 1;
+    text-align: CENTER;
+}
+
+#modal-close-btn {
+    cursor: pointer;
+    width: 48px;
+}
+
+div#modal-content {
+    height: calc(100% - 64px);
+    width: 100%;
+}
+
+table#logicTable {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+thead tr:first-child {
+    background: var(--secondary);
+}
+
+thead tr:last-child {
+    background: var(--secondary-alpha);
+}
+
+tbody tr:nth-child(even) {
+    background: var(--primary-alpha);
+}
+
+tr *:nth-child(even) {
+    backdrop-filter: brightness(90%);
+}
+
+tbody tr:hover {
+    background: var(--accent);
+    color: white;
+}
+
+tbody {
+    display: grid;
+    height: calc(100% - 60px);
+    overflow:auto;
+}
+
+thead, tbody tr, tfoot {
+    display:table;
+    width:100%;
+    table-layout:fixed;/* even columns width , fix width of table too*/
+}
+
+thead {
+    height: 60px;
+}
+
+tbody tr:last-child {
+    border-radius:  0 0 10px 10px;
+    margin-bottom: 1px;
+}
+
+
+tbody tr {
+    position: relative;
+    transition: height 0.1s linear;
+    animation: addRow 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28); /* out back animation, got from chrome dev tools*/
+}
+
+@keyframes addRow {
+    from {
+        left: 50px;
+    }
+    to {
+        left: 0px;
+    }
+}

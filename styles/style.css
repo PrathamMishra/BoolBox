@@ -2,6 +2,7 @@
 @import url("./base.css");
 @import url("./header.css");
 @import url("./footer.css");
+@import url("./modal.css");
 main {
     flex-grow: 1;
     padding: 16px 48px;
@@ -12,6 +13,7 @@ main {
     flex-grow: 1;
     display: flex;
     position: relative;
+    user-select: none;
 }
 #logic-container {
     flex-grow: 1;

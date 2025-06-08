@@ -27,3 +27,13 @@ export function makeDraggable(node, container, excludePath, onDragMove) {
         }
     });
 }
+
+export function numFromChar(char) {
+    return char.charCodeAt(0) - 97;
+}
+
+export function charFromNum(num, upperCase = false) {
+    const char = String.fromCharCode(num + 97);
+    if (upperCase) return char.toUpperCase();
+    return char;
+}
